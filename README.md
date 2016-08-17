@@ -1,3 +1,7 @@
+# Update
+Version 1.1.2 & 2.0.0-beta.3 now support UMD bundles.
+
+
 # Angular 2 (rc.5): AIO Modal / Dialog window
 
 A fully generic, customizable and fluent modal window implementation for Angular.
@@ -48,9 +52,9 @@ Use [this plunker](http://plnkr.co/edit/7c0pGE?p=preview) for quick showcasing a
 
 
 ## Sample code: Custom Modal dialog
-http://embed.plnkr.co/7c0pGE/
+http://embed.plnkr.co/mbPzd8/
 
-http://embed.plnkr.co/hwbmF9/   (version 1.1.1)
+http://embed.plnkr.co/ZAZqZu/   (version 1.1.1)
 
 
 ![Code Generator!](/preview.png)
@@ -63,64 +67,8 @@ See [src/demo](https://github.com/shlomiassaf/angular2-modal/tree/master/src/dem
 ```
 
 ## SystemJS
-Demo application is built with `Webpack` and `SystemJS`.   
-The only difference is the `index.html` file.  
-The deployed demo site is in `SystemJS`, development is done with `Webpack`
-
-In src/system.config.ts, add the property
-```
-  'angular2-modal': 'vendor/angular2-modal',
-```
-to one of the System.config() arguments.
-
-Optionally, you may call System.config() with an object of the form:
-```
-  {
-    'packages': {
-      angular2-modal': { ... main: 'index.js', ... },
-      ...
-    },
-    ...
-  };
-```
-.
-
-
-## Angular-cli   
- 
-In ./angular-cli.build.js, and an entry for 'angular2-modal', as in:
-```
-module.exports = function(defaults) {
-  return new Angular2App(defaults, {
-    vendorNpmFiles: [
-      [ ... other file globs ...],
-      'angular2-modal/**/*.+(ts|js|js.map)',
-    ]
-  });
-```
-
-In src/system.config.ts,
-you will satisfy the first requirement in the [SystemJS](#systemjs) section
-by adding the property *angular2-modal* to the *map* array near the beginning of the file, as in:
-```
-/** Map relative paths to URLs. */
-  const map: any = {
-    'angular2-modal': 'vendor/angular2-modal',
-    ...
-  };
-```
-
-You may configure the *packages* property from [SystemJS](#systemjs)
-by adding the 'angular2-modal' property the *packages* array
-near the beginning of system.config.ts as in:
-```
-  const packages: any = {
-    'angular2-modal': {
-      main: 'index.js',
-      ...
-    }
-  }
-```
+See systemJS example in [this plunker](http://embed.plnkr.co/mbPzd8/)
+Include both module and UMD bundle approach
 
 ## Plugins
 Plugins serve as a concrete UI implementation for a modal. It can be an implementation for a known library (e.g: bootstrap) or something unique.  
@@ -137,13 +85,6 @@ While `angular2-modal` has some built in plugins it is also possible to use exte
 
 You can apply custom modals based on components.
 
-
-## Publishing
-Publishing is done using the TypeScript compiler directly (no webpack)
-The process involves compiling into a directory called `dist`
-Webpack is using the `build` directory.
-Since I didn't find a way to instruct `tsc` what config file to use (i.e: a different tsconfig.json)
-I created a `publish` directory instead and set the `--project` argument accordingly.
 
 # Issues and TODO's
 ## Animation
